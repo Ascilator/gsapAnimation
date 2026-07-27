@@ -27,17 +27,20 @@ export function updateFlyingClone(clone, target, progress, endScale) {
   })
 }
 
-export function addFirstScreenAnimation(timeline, { flyLogo = true } = {}) {
-  timeline.fromTo('.first_screen_image', { opacity: 0 }, { opacity: 1, duration: firstScreenAppear })
-  timeline.fromTo('.first_screen_text', { opacity: 0 }, { opacity: 1, duration: firstScreenAppear }, '<')
+export function playFirstScreenIntro() {
+  const tl = gsap.timeline({ defaults: { ease: TRANSITION_EASE } })
+  tl.fromTo('.first_screen_image', { opacity: 0 }, { opacity: 1, duration: LOGO_INTRO_DURATION })
+  tl.fromTo('.first_screen_text', { opacity: 0 }, { opacity: 1, duration: LOGO_INTRO_DURATION }, '<')
+  return tl
+}
 
+export function addFirstScreenAnimation(timeline, { flyLogo = true } = {}) {
   timeline.to(
     '.first_screen',
     { backgroundColor: '#f7f7f7', duration: firstScreenFadeOut, ease: 'none' },
     firstScreenAppear
   )
   timeline.to('.first_screen_text', { opacity: 0, duration: firstScreenFadeOut, ease: 'none' }, firstScreenAppear)
-
   timeline.to('.first_screen', { autoAlpha: 0, duration: firstScreenLeave, ease: 'none' }, firstScreenAppear)
 
   if (!flyLogo) return
@@ -65,13 +68,6 @@ export function addFirstScreenAnimation(timeline, { flyLogo = true } = {}) {
     },
     firstScreenAppear
   )
-}
-
-export function playFirstScreenIntro() {
-  const tl = gsap.timeline({ defaults: { ease: TRANSITION_EASE } })
-  tl.fromTo('.first_screen_image', { opacity: 0 }, { opacity: 1, duration: LOGO_INTRO_DURATION })
-  tl.fromTo('.first_screen_text', { opacity: 0 }, { opacity: 1, duration: LOGO_INTRO_DURATION }, '<')
-  return tl
 }
 
 export function buildFirstScreenLeaveTimeline() {

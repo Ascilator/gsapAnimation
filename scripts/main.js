@@ -60,20 +60,34 @@ ScrollTrigger.matchMedia({
   },
 
   '(max-width: 768px)': () => {
-    const totalScroll = firstScreenAppear + firstScreenLeave
+    const totalScroll = firstScreenLeave
 
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.trigger',
-        start: 'top top',
-        end: `+=${totalScroll}`,
-        pin: true,
-        scrub: true
-        // markers: true
-      }
+    const setupScrollAnimation = () => {
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.trigger',
+          start: 'top top',
+          end: `+=${totalScroll}`,
+          pin: true,
+          scrub: true
+        }
+      })
+
+      addFirstScreenAnimation(timeline)
+    }
+
+    if (firstScreenIntroPlayed) {
+      setupScrollAnimation()
+      return
+    }
+
+    firstScreenIntroPlayed = true
+    document.body.style.overflow = 'hidden'
+
+    playFirstScreenIntro().eventCallback('onComplete', () => {
+      document.body.style.overflow = ''
+      setupScrollAnimation()
     })
-
-    addFirstScreenAnimation(timeline)
   }
 })
 
