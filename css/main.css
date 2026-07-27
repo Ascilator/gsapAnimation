@@ -118,6 +118,7 @@ body {
   display: flex;
   align-items: center;
   gap: 14px;
+  line-height: 1.2;
 }
 @media screen and (max-width: 768px) {
   .header .left_part h4 {
@@ -164,6 +165,7 @@ body {
   position: fixed;
   top: 80px;
   width: 100%;
+  z-index: 10;
 }
 .supheader .wrapper {
   margin: 0 auto;
@@ -195,13 +197,17 @@ body {
   width: 0;
   overflow: hidden;
 }
+@media screen and (min-width: 769px) {
+  .supheader .supheader_item {
+    cursor: pointer;
+  }
+}
 .supheader .supheader_item_image {
   width: 75px;
   flex: 0 0 75px;
 }
-.supheader .supheader_item_image img {
-  -o-object-fit: contain;
-     object-fit: contain;
+.supheader .supheader_item_image svg path {
+  transition: 0.2s;
 }
 .supheader .supheader_item p {
   flex: 0 0 200px;
@@ -209,11 +215,21 @@ body {
   font-weight: 500;
   line-height: 130%;
   color: #6e6e73;
+  transition: 0.2s;
 }
 @media screen and (max-width: 768px) {
   .supheader .supheader_item p {
     flex: 0 1 auto;
   }
+}
+.supheader .supheader_item:hover .supheader_item_image svg path {
+  fill: #6e6e73;
+}
+.supheader .supheader_item:active p {
+  color: #000;
+}
+.supheader .supheader_item:active .supheader_item_image svg path {
+  fill: #000;
 }
 @media screen and (max-width: 768px) {
   .supheader .supheader_item {
@@ -285,6 +301,7 @@ body {
   width: 100%;
   background: #f5f5f7;
   z-index: 5;
+  padding: 0 0 50px;
 }
 .first_screen .first_screen_image {
   position: relative;
@@ -370,6 +387,7 @@ body {
 }
 .animation_item .text_part h2 {
   font-size: 56px;
+  line-height: 1.1;
   font-weight: 600;
   text-transform: capitalize;
 }
@@ -386,6 +404,7 @@ body {
   color: #6e6e73;
   font-size: 26px;
   line-height: 130%;
+  margin-top: 20px;
 }
 @media screen and (max-width: 768px) {
   .animation_item .text_part p {
@@ -525,6 +544,7 @@ body {
 }
 .animation_item:first-child .text_part h2 {
   font-size: 56px;
+  line-height: 1.1;
   margin: 0 auto;
 }
 @media screen and (max-width: 768px) {
@@ -656,10 +676,16 @@ body {
   flex-shrink: 0;
   transition: transform 0.2s ease;
 }
+.faq_icon svg path {
+  transition: 0.2s;
+}
 
 .faq_question[aria-expanded=true] .faq_icon {
   transform: rotate(180deg);
   opacity: 0.8;
+}
+.faq_question[aria-expanded=true] .faq_icon svg path {
+  fill: #6e6e73;
 }
 
 .faq_answer {

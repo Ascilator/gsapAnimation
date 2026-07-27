@@ -37,10 +37,18 @@ ScrollTrigger.matchMedia({
     const cooldown = Math.max(FIRST_SCREEN_LEAVE_DURATION, CARD_TRANSITION_DURATION) * 1000 + 100
     const unbindNavigation = bindWheelAndTouchNavigation(slider, { cooldown })
 
+    const handleSupheaderClick = index => () => slider.goTo(index + 1)
+    const supheaderClickHandlers = supheaderItems.map((supItem, index) => {
+      const handler = handleSupheaderClick(index)
+      supItem.addEventListener('click', handler)
+      return handler
+    })
+
     document.body.classList.add('is_slider_mode')
 
     return () => {
       unbindNavigation()
+      supheaderItems.forEach((supItem, index) => supItem.removeEventListener('click', supheaderClickHandlers[index]))
       document.body.classList.remove('is_slider_mode')
       slider.destroy()
     }

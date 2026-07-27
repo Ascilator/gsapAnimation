@@ -3,33 +3,58 @@ export function createSlideController(transitions) {
   let current = 0
   let animating = false
 
+  function stepForward(onDone) {
+    const tl = transitions[current]
+    current += 1
+    tl.eventCallback('onComplete', onDone)
+    tl.play(0)
+  }
+
+  function stepBackward(onDone) {
+    current -= 1
+    const tl = transitions[current]
+    tl.eventCallback('onReverseComplete', onDone)
+    tl.reverse()
+  }
+
   function next() {
     if (animating || current >= lastSlide) return
     animating = true
-    const tl = transitions[current]
-    current += 1
-    tl.eventCallback('onComplete', () => {
+    stepForward(() => {
       animating = false
     })
-    tl.play(0)
   }
 
   function prev() {
     if (animating || current <= 0) return
     animating = true
-    current -= 1
-    const tl = transitions[current]
-    tl.eventCallback('onReverseComplete', () => {
+    stepBackward(() => {
       animating = false
     })
-    tl.reverse()
+  }
+
+  function goTo(target) {
+    target = Math.max(0, Math.min(lastSlide, target))
+    if (animating || target === current) return
+    animating = true
+
+    function advance() {
+      if (current === target) {
+        animating = false
+        return
+      }
+      if (current < target) stepForward(advance)
+      else stepBackward(advance)
+    }
+
+    advance()
   }
 
   function destroy() {
     transitions.forEach(tl => tl.kill())
   }
 
-  return { next, prev, destroy }
+  return { next, prev, goTo, destroy }
 }
 
 export function bindWheelAndTouchNavigation(controller, { cooldown, wheelThreshold = 2, touchThreshold = 40 } = {}) {
