@@ -15,3 +15,6 @@ dist/
 
 # Sass cache
 .sass-cache/
+
+.claude/
+.antigravity/
