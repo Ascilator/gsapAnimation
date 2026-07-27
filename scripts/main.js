@@ -68,8 +68,8 @@ ScrollTrigger.matchMedia({
         start: 'top top',
         end: `+=${totalScroll}`,
         pin: true,
-        scrub: true,
-        markers: true
+        scrub: true
+        // markers: true
       }
     })
 

@@ -107,10 +107,14 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+@media screen and (max-width: 1024px) {
+  .header .wrapper {
+    flex-wrap: wrap;
+  }
+}
 @media screen and (max-width: 768px) {
   .header .wrapper {
     padding: 0;
-    flex-wrap: wrap;
   }
 }
 .header .left_part {
@@ -122,8 +126,14 @@ body {
 }
 .header .left_part img {
   cursor: pointer;
+  height: 47px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
+  .header .left_part img {
+    height: 35px;
+  }
+}
+@media screen and (max-width: 1024px) {
   .header .left_part h4 {
     display: none;
   }
@@ -135,7 +145,7 @@ body {
   margin-top: 10px;
   flex: 0 0 100%;
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1024px) {
   .header .mobile_text {
     display: none;
   }
@@ -246,6 +256,11 @@ body {
     border-bottom: none;
   }
 }
+@media screen and (max-width: 1024px) {
+  .supheader {
+    top: 110px;
+  }
+}
 @media screen and (max-width: 768px) {
   .supheader {
     position: static;
@@ -343,7 +358,7 @@ body {
   left: 100%;
   top: 220px;
   width: 100%;
-  padding: 80px 0;
+  padding: 80px 20px;
   height: calc(100vh - 220px);
 }
 .animation_item .content_container {
@@ -352,7 +367,7 @@ body {
   width: 100%;
   max-width: 1500px;
   margin: 0 auto;
-  gap: 20px;
+  gap: 30px;
   height: 100%;
 }
 @media screen and (max-width: 768px) {
@@ -372,6 +387,7 @@ body {
   box-shadow: 0px 0px 34.05px 0px rgba(207, 206, 204, 0.6);
   backdrop-filter: blur(3.0047774315px);
   border-radius: 85px;
+  width: 100%;
 }
 @media screen and (max-width: 768px) {
   .animation_item .image_part img {
@@ -611,6 +627,12 @@ body {
 }
 .animation_item._faq_block .text_part {
   width: 100%;
+}
+@media screen and (max-width: 1024px) {
+  .animation_item {
+    height: calc(100vh - 250px);
+    top: 250px;
+  }
 }
 @media screen and (max-width: 768px) {
   .animation_item {
