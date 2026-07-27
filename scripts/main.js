@@ -44,11 +44,16 @@ ScrollTrigger.matchMedia({
       return handler
     })
 
+    const headerLogo = document.querySelector('.header .left_part img')
+    const handleLogoClick = () => slider.goTo(1)
+    headerLogo.addEventListener('click', handleLogoClick)
+
     document.body.classList.add('is_slider_mode')
 
     return () => {
       unbindNavigation()
       supheaderItems.forEach((supItem, index) => supItem.removeEventListener('click', supheaderClickHandlers[index]))
+      headerLogo.removeEventListener('click', handleLogoClick)
       document.body.classList.remove('is_slider_mode')
       slider.destroy()
     }

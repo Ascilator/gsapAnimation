@@ -57,7 +57,7 @@ export function createSlideController(transitions) {
   return { next, prev, goTo, destroy }
 }
 
-export function bindWheelAndTouchNavigation(controller, { cooldown, wheelThreshold = 2, touchThreshold = 40 } = {}) {
+export function bindWheelAndTouchNavigation(controller, { cooldown, wheelThreshold = 2, touchThreshold = 80 } = {}) {
   let wheelLocked = false
 
   function handleWheel(event) {
