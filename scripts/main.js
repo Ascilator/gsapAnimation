@@ -1,5 +1,4 @@
 import {
-  firstScreenAppear,
   firstScreenLeave,
   FIRST_SCREEN_LEAVE_DURATION,
   CARD_TRANSITION_DURATION,

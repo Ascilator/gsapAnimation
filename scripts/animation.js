@@ -34,14 +34,10 @@ export function playFirstScreenIntro() {
   return tl
 }
 
-export function addFirstScreenAnimation(timeline, { flyLogo = true } = {}) {
-  timeline.to(
-    '.first_screen',
-    { backgroundColor: '#f7f7f7', duration: firstScreenFadeOut, ease: 'none' },
-    firstScreenAppear
-  )
-  timeline.to('.first_screen_text', { opacity: 0, duration: firstScreenFadeOut, ease: 'none' }, firstScreenAppear)
-  timeline.to('.first_screen', { autoAlpha: 0, duration: firstScreenLeave, ease: 'none' }, firstScreenAppear)
+function addFirstScreenLeave(timeline, position, { fadeDuration, totalDuration, flyLogo = true }) {
+  timeline.to('.first_screen', { backgroundColor: '#f7f7f7', duration: fadeDuration, ease: 'none' }, position)
+  timeline.to('.first_screen_text', { opacity: 0, duration: fadeDuration, ease: 'none' }, position)
+  timeline.to('.first_screen', { autoAlpha: 0, duration: totalDuration, ease: 'none' }, position)
 
   if (!flyLogo) return
 
@@ -49,14 +45,14 @@ export function addFirstScreenAnimation(timeline, { flyLogo = true } = {}) {
   const firstScreenLogoClone = document.querySelector('.first_screen_image .flying_clone')
   const headerLogo = document.querySelector('.header .left_part img')
 
-  timeline.set(firstScreenLogo, { opacity: 0 }, firstScreenAppear)
+  timeline.set(firstScreenLogo, { opacity: 0 }, position)
 
   const logoFlyState = { p: 0 }
   timeline.to(
     logoFlyState,
     {
       p: 1,
-      duration: firstScreenLeave,
+      duration: totalDuration,
       ease: 'none',
       onUpdate: () =>
         updateFlyingClone(
@@ -66,41 +62,26 @@ export function addFirstScreenAnimation(timeline, { flyLogo = true } = {}) {
           (cloneRect, targetRect) => targetRect.width / cloneRect.width
         )
     },
-    firstScreenAppear
+    position
   )
+}
+
+export function addFirstScreenAnimation(timeline, { flyLogo = true } = {}) {
+  addFirstScreenLeave(timeline, firstScreenAppear, {
+    fadeDuration: firstScreenFadeOut,
+    totalDuration: firstScreenLeave,
+    flyLogo
+  })
 }
 
 export function buildFirstScreenLeaveTimeline() {
   const tl = gsap.timeline({ paused: true, defaults: { ease: TRANSITION_EASE } })
   const fadeDuration = FIRST_SCREEN_LEAVE_DURATION * (firstScreenFadeOut / firstScreenLeave)
 
-  tl.to('.first_screen', { backgroundColor: '#f7f7f7', duration: fadeDuration, ease: 'none' }, 0)
-  tl.to('.first_screen_text', { opacity: 0, duration: fadeDuration, ease: 'none' }, 0)
-  tl.to('.first_screen', { autoAlpha: 0, duration: FIRST_SCREEN_LEAVE_DURATION, ease: 'none' }, 0)
-
-  const firstScreenLogo = document.querySelector('.first_screen_image img:not(.flying_clone)')
-  const firstScreenLogoClone = document.querySelector('.first_screen_image .flying_clone')
-  const headerLogo = document.querySelector('.header .left_part img')
-
-  tl.set(firstScreenLogo, { opacity: 0 }, 0)
-
-  const logoFlyState = { p: 0 }
-  tl.to(
-    logoFlyState,
-    {
-      p: 1,
-      duration: FIRST_SCREEN_LEAVE_DURATION,
-      ease: 'none',
-      onUpdate: () =>
-        updateFlyingClone(
-          firstScreenLogoClone,
-          headerLogo,
-          logoFlyState.p,
-          (cloneRect, targetRect) => targetRect.width / cloneRect.width
-        )
-    },
-    0
-  )
+  addFirstScreenLeave(tl, 0, {
+    fadeDuration,
+    totalDuration: FIRST_SCREEN_LEAVE_DURATION
+  })
 
   return tl.pause(0)
 }
