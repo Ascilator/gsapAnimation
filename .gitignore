@@ -1,0 +1,17 @@
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Build
+dist/
+*.log
+
+# Sass cache
+.sass-cache/

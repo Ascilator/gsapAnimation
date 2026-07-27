@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(run)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8765/index.html)",
+      "Bash(npm install *)",
+      "Bash(node _diag.js)",
+      "Bash(where sass *)",
+      "Bash(sass --version)",
+      "Bash(node _diag_mobile.js)",
+      "Bash(node _diag_layout.js)",
+      "Bash(node _diag_spacer.js)",
+      "Bash(node _diag_blocks.js)"
+    ]
+  }
+}
