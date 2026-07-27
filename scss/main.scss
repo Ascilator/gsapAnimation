@@ -23,6 +23,13 @@ body {
     display: flex;
     flex-direction: column;
   }
+
+  &.is_slider_mode {
+    @media screen and (min-width: 769px) {
+      overflow-y: hidden;
+      height: 100vh;
+    }
+  }
 }
 
 * {

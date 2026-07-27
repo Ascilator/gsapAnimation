@@ -79,6 +79,12 @@ body {
     flex-direction: column;
   }
 }
+@media screen and (min-width: 769px) {
+  body.is_slider_mode {
+    overflow-y: hidden;
+    height: 100vh;
+  }
+}
 
 * {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
