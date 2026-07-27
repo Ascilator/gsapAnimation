@@ -45,7 +45,7 @@ ScrollTrigger.matchMedia({
     })
 
     const headerLogo = document.querySelector('.header .left_part img')
-    const handleLogoClick = () => slider.goTo(1)
+    const handleLogoClick = () => slider.goTo(0)
     headerLogo.addEventListener('click', handleLogoClick)
 
     document.body.classList.add('is_slider_mode')
