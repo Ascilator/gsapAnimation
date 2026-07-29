@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger)
 let firstScreenIntroPlayed = false
 
 ScrollTrigger.matchMedia({
-  '(min-width: 769px)': () => {
+  '(min-width: 1121px)': () => {
     const supheaderItems = gsap.utils.toArray('.supheader_item')
     const animationItems = gsap.utils.toArray('.animation_item')
 
@@ -58,7 +58,7 @@ ScrollTrigger.matchMedia({
     }
   },
 
-  '(max-width: 768px)': () => {
+  '(max-width: 1120px)': () => {
     const totalScroll = firstScreenLeave
 
     const setupScrollAnimation = () => {

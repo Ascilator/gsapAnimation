@@ -73,13 +73,13 @@ body {
   color: #1d1d1f;
   overflow-x: hidden;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   body {
     display: flex;
     flex-direction: column;
   }
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1121px) {
   body.is_slider_mode {
     overflow-y: hidden;
     height: 100vh;
@@ -112,7 +112,7 @@ body {
     flex-wrap: wrap;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .header .wrapper {
     padding: 0;
   }
@@ -166,7 +166,7 @@ body {
 .header .right_part button:hover {
   opacity: 0.8;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .header {
     background: #fff;
     padding: 15px;
@@ -185,7 +185,7 @@ body {
   padding: 0 48px;
   gap: 10px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .supheader .wrapper {
     padding: 0;
   }
@@ -197,7 +197,7 @@ body {
   justify-content: center;
   gap: 8px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .supheader .superheader_wrapper {
     flex-direction: column;
   }
@@ -210,7 +210,7 @@ body {
   width: 0;
   overflow: hidden;
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1121px) {
   .supheader .supheader_item {
     cursor: pointer;
   }
@@ -230,7 +230,7 @@ body {
   color: #6e6e73;
   transition: 0.2s;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .supheader .supheader_item p {
     flex: 0 1 auto;
   }
@@ -244,7 +244,7 @@ body {
 .supheader .supheader_item:active .supheader_item_image svg path {
   fill: #000;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .supheader .supheader_item {
     width: 100% !important;
     overflow: visible;
@@ -256,19 +256,22 @@ body {
     border-bottom: none;
   }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1650px) {
   .supheader {
-    top: 110px;
+    opacity: 0;
+    visibility: hidden;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .supheader {
     position: static;
     order: 2;
+    opacity: 1;
+    visibility: visible;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .main_wrapper {
     padding-top: 80px;
   }
@@ -278,7 +281,7 @@ body {
   position: relative;
   height: 100vh;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .container {
     height: auto;
   }
@@ -295,13 +298,13 @@ body {
   z-index: 50;
   will-change: transform, opacity;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .flying_clone {
     display: none;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .first_screen_image .flying_clone {
     display: block;
   }
@@ -324,7 +327,7 @@ body {
 .first_screen .first_screen_image {
   position: relative;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .first_screen .first_screen_image {
     max-width: 320px;
     margin: 0 auto;
@@ -337,7 +340,7 @@ body {
   line-height: 120%;
   letter-spacing: -1%;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .first_screen .first_screen_text {
     color: #6e6e73;
     font-size: 24px;
@@ -345,7 +348,7 @@ body {
     margin: 20px auto 0;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .first_screen {
     padding: 0 30px;
   }
@@ -370,7 +373,7 @@ body {
   gap: 30px;
   height: 100%;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item .content_container {
     display: block;
   }
@@ -389,13 +392,13 @@ body {
   border-radius: 85px;
   width: 100%;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item .image_part img {
     max-width: 345px;
     border-radius: 55px;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item .image_part {
     width: 100%;
     justify-content: center;
@@ -410,7 +413,7 @@ body {
   font-weight: 600;
   text-transform: capitalize;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item .text_part h2 {
     text-align: center;
     line-height: 120%;
@@ -425,7 +428,7 @@ body {
   line-height: 130%;
   margin-top: 20px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item .text_part p {
     text-align: center;
     font-size: 19px;
@@ -458,13 +461,13 @@ body {
   -o-object-position: 0 50%;
      object-position: 0 50%;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item .text_part ul {
     align-items: center;
     gap: 10px;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item .text_part {
     width: 100%;
     padding: 0;
@@ -478,7 +481,7 @@ body {
   display: flex;
   gap: 30px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item .running_logos {
     margin-top: 35px;
   }
@@ -494,7 +497,7 @@ body {
   line-height: 110%;
   letter-spacing: -1.76px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item .center_part h2 {
     font-size: 56px;
   }
@@ -508,7 +511,7 @@ body {
   max-width: 1140px;
   margin: 35px auto 0;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item .center_part p {
     font-size: 26px;
   }
@@ -547,12 +550,12 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item:first-child .image_part img {
     border-radius: 0;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item:first-child .image_part {
     height: auto;
     max-height: 345px;
@@ -566,7 +569,7 @@ body {
   line-height: 1.1;
   margin: 0 auto;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item:first-child {
     position: static;
     transform: none;
@@ -579,7 +582,12 @@ body {
   height: calc(100% - 220px);
   padding-top: 0;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1650px) {
+  .animation_item:last-child {
+    height: calc(100% - 80px);
+  }
+}
+@media screen and (max-width: 1120px) {
   .animation_item:last-child {
     height: auto;
   }
@@ -605,7 +613,7 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item._with_image .image_part img {
     border-radius: 0;
     max-height: 345px;
@@ -614,7 +622,12 @@ body {
 .animation_item._with_image:nth-child(4) {
   padding-bottom: 140px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1650px) {
+  .animation_item._with_image:nth-child(4) {
+    padding-bottom: 80px;
+  }
+}
+@media screen and (max-width: 1120px) {
   .animation_item._with_image:nth-child(4) {
     padding-bottom: 0;
   }
@@ -628,13 +641,19 @@ body {
 .animation_item._faq_block .text_part {
   width: 100%;
 }
+@media screen and (max-width: 1650px) {
+  .animation_item {
+    height: calc(100vh - 80px);
+    top: 80px;
+  }
+}
 @media screen and (max-width: 1024px) {
   .animation_item {
     height: calc(100vh - 250px);
     top: 250px;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .animation_item {
     position: static;
     width: 100%;
@@ -671,7 +690,7 @@ body {
   gap: 6px;
   margin-top: 20px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .faq {
     padding: 0 15px;
   }
@@ -691,7 +710,7 @@ body {
   color: #6e6e73;
   transition: 0.2s;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
   .faq_question {
     border-radius: 24px;
   }
