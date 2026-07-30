@@ -217,8 +217,12 @@ body {
       padding: 15px 50px 35px;
       border-bottom: 1px solid #1d1d1f4d;
 
-      &:last-child {
+      &:nth-child(5) {
         border-bottom: none;
+      }
+
+      &:last-child {
+        display: none;
       }
     }
   }
@@ -529,6 +533,7 @@ body {
 
     .text_part {
       max-width: 780px;
+      margin: 40px auto 0;
       h2 {
         font-size: 56px;
         line-height: 1.1;
@@ -539,6 +544,7 @@ body {
     @media screen and (max-width: 1120px) {
       position: static;
       transform: none;
+      margin-top: 0;
 
       .content_container {
         height: auto;
@@ -608,7 +614,7 @@ body {
     }
 
     .text_part {
-      width: 100%;
+      margin-left: auto;
     }
   }
 

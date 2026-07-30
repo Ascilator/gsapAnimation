@@ -1,4 +1,3 @@
-export const firstScreenAppear = 200
 export const firstScreenLeave = 500
 export const firstScreenFadeOut = 150
 
@@ -7,7 +6,7 @@ export const flyScale = 0.15
 
 export const INTRO_DURATION = 0.3
 export const LOGO_INTRO_DURATION = 2
-export const FIRST_SCREEN_LEAVE_DURATION = 0.8
+export const FIRST_SCREEN_LEAVE_DURATION = 0.4
 export const CARD_TRANSITION_DURATION = 0.3
 export const TRANSITION_EASE = 'power2.inOut'
 
@@ -64,14 +63,6 @@ function addFirstScreenLeave(timeline, position, { fadeDuration, totalDuration, 
     },
     position
   )
-}
-
-export function addFirstScreenAnimation(timeline, { flyLogo = true } = {}) {
-  addFirstScreenLeave(timeline, firstScreenAppear, {
-    fadeDuration: firstScreenFadeOut,
-    totalDuration: firstScreenLeave,
-    flyLogo
-  })
 }
 
 export function buildFirstScreenLeaveTimeline() {

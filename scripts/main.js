@@ -1,8 +1,6 @@
 import {
-  firstScreenLeave,
   FIRST_SCREEN_LEAVE_DURATION,
   CARD_TRANSITION_DURATION,
-  addFirstScreenAnimation,
   playFirstScreenIntro,
   buildFirstScreenLeaveTimeline,
   buildCardTransitionTimeline
@@ -59,34 +57,49 @@ ScrollTrigger.matchMedia({
   },
 
   '(max-width: 1120px)': () => {
-    const totalScroll = firstScreenLeave
+    const transitions = [buildFirstScreenLeaveTimeline()]
+    const cooldown = FIRST_SCREEN_LEAVE_DURATION * 1000 + 100
 
-    const setupScrollAnimation = () => {
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.trigger',
-          start: 'top top',
-          end: `+=${totalScroll}`,
-          pin: true,
-          scrub: true
+    let unbindNavigation = null
+
+    function bindNavigation() {
+      if (!unbindNavigation) unbindNavigation = bindWheelAndTouchNavigation(slider, { cooldown })
+    }
+
+    function handleScroll() {
+      if (window.scrollY <= 0) bindNavigation()
+    }
+
+    const slider = createSlideController(transitions, {
+      onSettle: current => {
+        if (current === transitions.length && unbindNavigation) {
+          unbindNavigation()
+          unbindNavigation = null
         }
-      })
-
-      addFirstScreenAnimation(timeline)
-    }
-
-    if (firstScreenIntroPlayed) {
-      setupScrollAnimation()
-      return
-    }
-
-    firstScreenIntroPlayed = true
-    document.body.style.overflow = 'hidden'
-
-    playFirstScreenIntro().eventCallback('onComplete', () => {
-      document.body.style.overflow = ''
-      setupScrollAnimation()
+      }
     })
+
+    if (!firstScreenIntroPlayed) {
+      firstScreenIntroPlayed = true
+      playFirstScreenIntro()
+    }
+
+    bindNavigation()
+    window.addEventListener('scroll', handleScroll)
+
+    const headerLogo = document.querySelector('.header .left_part img')
+    const handleLogoClick = () => slider.goTo(0)
+    headerLogo.addEventListener('click', handleLogoClick)
+
+    document.body.classList.add('is_slider_mode')
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (unbindNavigation) unbindNavigation()
+      headerLogo.removeEventListener('click', handleLogoClick)
+      document.body.classList.remove('is_slider_mode')
+      slider.destroy()
+    }
   }
 })
 

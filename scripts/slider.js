@@ -1,7 +1,12 @@
-export function createSlideController(transitions) {
+export function createSlideController(transitions, { onSettle } = {}) {
   const lastSlide = transitions.length
   let current = 0
   let animating = false
+
+  function settle() {
+    animating = false
+    if (onSettle) onSettle(current)
+  }
 
   function stepForward(onDone) {
     const tl = transitions[current]
@@ -20,17 +25,13 @@ export function createSlideController(transitions) {
   function next() {
     if (animating || current >= lastSlide) return
     animating = true
-    stepForward(() => {
-      animating = false
-    })
+    stepForward(settle)
   }
 
   function prev() {
     if (animating || current <= 0) return
     animating = true
-    stepBackward(() => {
-      animating = false
-    })
+    stepBackward(settle)
   }
 
   function goTo(target) {
@@ -40,7 +41,7 @@ export function createSlideController(transitions) {
 
     function advance() {
       if (current === target) {
-        animating = false
+        settle()
         return
       }
       if (current < target) stepForward(advance)
