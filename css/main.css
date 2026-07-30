@@ -366,6 +366,7 @@ body {
 @media screen and (max-width: 1120px) {
   .first_screen {
     padding: 0 30px;
+    z-index: 12;
   }
 }
 
