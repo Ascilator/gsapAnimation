@@ -181,6 +181,7 @@ body {
   .header {
     background: #fff;
     padding: 15px;
+    z-index: 11;
   }
 }
 
