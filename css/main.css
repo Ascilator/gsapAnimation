@@ -166,6 +166,17 @@ body {
 .header .right_part button:hover {
   opacity: 0.8;
 }
+@media screen and (max-width: 400px) {
+  .header .right_part button {
+    height: 30px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .header .right_part {
+    display: flex;
+    align-items: center;
+  }
+}
 @media screen and (max-width: 1120px) {
   .header {
     background: #fff;
